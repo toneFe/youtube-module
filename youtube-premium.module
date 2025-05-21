@@ -1,0 +1,10 @@
+#!name=YouTube Premium (iOS)
+#!desc=Mô-đun để mở khóa một số tính năng YouTube Premium, như bỏ quảng cáo, phát nền, và tải video.
+# Lưu ý: Đăng xuất và đăng nhập lại YouTube sau khi kích hoạt.
+
+[MITM]
+hostname = %APPEND% youtube.com, googlevideo.com, youtubei.googleapis.com, googleads.g.doubleclick.net
+
+[Script]
+youtube-json = type=http-request,pattern=^https:\/\/(youtubei\.googleapis\.com\/youtubei\/v1\/account|youtube\.com\/api\/.*),requires-body=0,script-path=https://raw.githubusercontent.com/your-username/youtube-module/main/scripts/my-youtube-json.js
+youtube-proto = type=http-response,pattern=^https:\/\/(youtubei\.googleapis\.com\/youtubei\/v1\/account|googlevideo\.com\/videoplayback),requires-body=1,binary-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/your-username/youtube-module/main/scripts/my-youtube-proto.js
